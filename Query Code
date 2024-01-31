@@ -1,0 +1,9 @@
+Date expiry in Query
+
+Status Color ##(New Column name)= 
+    if [SCM licence expiry] < DateTime.Date(DateTime.LocalNow()) then "Red"  ##(Less than todays date)
+    else if [SCM licence expiry] = DateTime.Date(DateTime.LocalNow()) then "Red" ##(Todays date)
+    else if [SCM licence expiry] <= DateTime.Date(DateTime.LocalNow()) + #duration(30, 0, 0, 0) then "Yellow"  ##(Within next 30 days including today)
+    else "Green"
+
+(#Duration Days, Hours, Minuetes, Seconds)
