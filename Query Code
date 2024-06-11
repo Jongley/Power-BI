@@ -1,3 +1,4 @@
+###
 Date expiry in Query
 
 Status Color ##(New Column name)= 
@@ -7,3 +8,20 @@ Status Color ##(New Column name)=
     else "Green"
 
 (##Duration Days, Hours, Minuetes, Seconds)
+###
+
+
+###
+Date difference simple colour code (Table View)
+Todays date compared to actual date (true date) with the difference
+
+**Difference column** 
+Diff = DATEDIFF('Brief - DB Password Expiry - Part 1'[TODAY],'Brief - DB Password Expiry - Part 1'[True Date],DAY)
+**Today column**
+TODAY = TODAY ()
+**Final column** (For number colour code)
+final = IF(AND('Brief - DB Password Expiry - Part 1'[Diff] >-200,'Brief - DB Password Expiry - Part 1'[Diff] <=1 ),1,BLANK()) 
+& IF(AND('Brief - DB Password Expiry - Part 1'[Diff] >=2,'Brief - DB Password Expiry - Part 1'[Diff] <=15),2,BLANK()) 
+& IF(AND('Brief - DB Password Expiry - Part 1'[Diff] >=16, 'Brief - DB Password Expiry - Part 1'[Diff] <=100),3,BLANK()) 
+& IF(AND('Brief - DB Password Expiry - Part 1'[Diff] >-100000000, 'Brief - DB Password Expiry - Part 1'[Diff] <=-200),4,BLANK()) 
+###
