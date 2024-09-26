@@ -25,3 +25,12 @@ final = IF(AND('Brief - DB Password Expiry - Part 1'[Diff] >-200,'Brief - DB Pas
 & IF(AND('Brief - DB Password Expiry - Part 1'[Diff] >=16, 'Brief - DB Password Expiry - Part 1'[Diff] <=100),3,BLANK()) 
 & IF(AND('Brief - DB Password Expiry - Part 1'[Diff] >-100000000, 'Brief - DB Password Expiry - Part 1'[Diff] <=-200),4,BLANK()) 
 ###
+
+
+###
+Date over 7 days true/false 
+In table view new column enter below dax code 
+
+IsOlderThan7Days = IF([Date Last Modified] < TODAY() - 7, TRUE, FALSE)
+
+Can be used for a count function 
