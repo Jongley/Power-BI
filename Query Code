@@ -34,3 +34,35 @@ In table view new column enter below dax code
 IsOlderThan7Days = IF([Date Last Modified] < TODAY() - 7, TRUE, FALSE)
 
 Can be used for a count function 
+
+
+
+###
+Add column for UTC time 
+
+1. **Open Power Query Editor**:
+   - In Power BI Desktop, go to the **Home** tab and click on **Transform data**. This will open the Power Query Editor.
+
+2. **Select Your Date Column**:
+   - In the Power Query Editor, find the table that contains your date column. Click on the column header to select it.
+
+3. **Add a Custom Column**:
+   - Go to the **Add Column** tab and click on **Custom Column**. This will open the Custom Column dialog box.
+
+4. **Enter the Adjustment Formula**:
+   - In the Custom Column dialog box, you can enter a formula to adjust the date. For example, if you need to add one hour to account for DST, you can use the following formula:
+     ```M
+     DateTime.AddZone([YourDateColumn], 0) + #duration(0, 1, 0, 0)
+     ```
+     Replace `[YourDateColumn]` with the actual name of your date column. This formula adds one hour to the date.
+
+5. **Name the New Column**:
+   - Give your new column a name, such as `AdjustedDate`, and click **OK**.
+
+6. **Verify the Results**:
+   - Check the new column to ensure the dates have been adjusted correctly. You can compare the original and adjusted dates to see the changes.
+
+7. **Apply and Close**:
+   - Once you’re satisfied with the adjustments, click on **Close & Apply** in the Home tab to apply the changes and return to Power BI Desktop.
+
+###
