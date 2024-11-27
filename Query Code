@@ -66,3 +66,12 @@ Add column for UTC time
    - Once you’re satisfied with the adjustments, click on **Close & Apply** in the Home tab to apply the changes and return to Power BI Desktop.
 
 ###
+
+
+Query 
+Adding colour columns with grey set for year 2000
+
+if [#"column name"] = #date(2000, 1, 1) then "Grey"
+else if [#"column name"] <= DateTime.Date(DateTime.LocalNow()) then "Red"
+else if [#"column name"] <= DateTime.Date(DateTime.LocalNow()) + #duration(30, 0, 0, 0) then "Yellow"
+else "Green"
