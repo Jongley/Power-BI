@@ -75,3 +75,18 @@ if [#"column name"] = #date(2000, 1, 1) then "Grey"
 else if [#"column name"] <= DateTime.Date(DateTime.LocalNow()) then "Red"
 else if [#"column name"] <= DateTime.Date(DateTime.LocalNow()) + #duration(30, 0, 0, 0) then "Yellow"
 else "Green"
+
+###
+
+Model entry for worded data to get a colour code 
+New column and input DAX below
+ColorCode = 
+SWITCH(
+    TRUE(),
+    TableName[Column1] = "SERVICEABLE", "Green",
+    TableName[Column1] = "UNSERVICEABLE", "Red",
+    TableName[Column1] = "AIRBORNE", "Blue",
+    "Other"
+)
+
+###
